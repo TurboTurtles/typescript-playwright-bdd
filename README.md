@@ -100,10 +100,20 @@ brew install git
 Open Terminal and create a directory for projects if not exists. (mkdir your-projects-directory)
 ```
 Then setup your repository:
+
+In terminal:
 ```bash
 cd your-projects-directory
-git clone https://github.com/your-org/your-repo-name.git
-cd your-repo-name
+git clone https://github.com/vskryabin/typescript-playwright-bdd.git
+cd typescript-playwright-bdd
+```
+
+Or in VSCode directly:
+```bash
+Click SourceControl icon on the left
+Select Clone Repository
+https://github.com/vskryabin/typescript-playwright-bdd.git
+Select folder where project will be located
 ```
 
 ### 3. Install Dependencies
