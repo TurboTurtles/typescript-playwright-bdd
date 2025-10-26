@@ -8,7 +8,7 @@ module.exports = {
       'html:test-reports/report.html',
       'json:test-reports/report.json'
     ],
-    paths: ['bdd/features/**/*.feature'],
-    timeout: parseInt(process.env.GLOBAL_TIMEOUT || '60000')
+    timeout: parseInt(process.env.GLOBAL_TIMEOUT || '60000'),
+    paths: ['bdd/features/**/*.feature']
   }
 };
