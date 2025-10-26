@@ -114,17 +114,36 @@ npm install
 
 ### 4. Running tests
 
-BDD tests:
+Install Plawright browsers:
 ```bash
-npm test
+npx playwright install
 ```
 
-Non-BDD tests:
+BDD Playwright tests:
+```bash
+npm run bdd -- '@tag'
+```
+
+Playwright tests:
 ```bash
 npx playwright test
+npx playwright test tests/test.spec.ts
+npx playwright test -g 'partial test name'
+npx playwright test -g 'partial test name' -g 'another partial test name'
+npx playwright test --grep-invert 'excluded partial name'
+```
+
+Playwright report:
+```bash
+npx playwright show-report test-reports
 ```
 
 Codegen:
 ```bash
 npx playwright codegen
+```
+
+More:
+```bash
+https://playwright.dev/docs/test-cli
 ```

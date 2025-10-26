@@ -1,71 +1,73 @@
 console.log('Loading playwright.config.ts...');
 import { defineConfig, devices } from '@playwright/test';
-import dotenv from 'dotenv';
+import { config } from './config';
 
-dotenv.config();
+const globalUse = {
+  baseURL: config.testData.baseUrl,
+  actionTimeout: config.timeouts.action,
+  navigationTimeout: config.timeouts.navigation,
+  trace: 'on',
+  headless: config.browser.headless,
+  screenshot: 'on',
+  video: 'on',
+  ignoreHTTPSErrors: true,
+  launchOptions: {
+    slowMo: config.browser.slowMo,
+    args: [
+      '--disable-web-security',
+      '--disable-gpu',
+      '--no-sandbox',
+      '--disable-setuid-sandbox',
+      `--window-position=${config.browser.position.x},${config.browser.position.y}`,
+      `--window-size=${config.browser.viewport.width},${config.browser.viewport.height}`,
+    ],
+    ignoreDefaultArgs: ['--disable-extensions'],
+  },
+  contextOptions: {
+    viewport: config.browser.viewport,
+    permissions: ['geolocation'],
+    geolocation: { longitude: -122.4194, latitude: 37.7749 },
+    locale: 'en-US',
+    timezoneId: 'America/New_York',
+    recordVideo: {  // Explicit: Triggers recording with default dir
+      dir: 'test-results/videos',
+      size: { width: config.browser.viewport.width, height: config.browser.viewport.height },
+    },
+  },
+};
 
-const browserEnv = process.env.BROWSER?.toLowerCase();
-const projects = [];
-switch (browserEnv) {
-  case 'chromium':
-    projects.push({
-      name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
-    });
-    break;
-  case 'firefox':
-    projects.push({
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
-    });
-    break;
-  case 'webkit':
-    projects.push({
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
-    });
-    break;
-  default:
-    projects.push(
-      { name: 'chromium', use: { ...devices['Desktop Chrome'] } },
-      { name: 'firefox',  use: { ...devices['Desktop Firefox'] } }
-    );
-}
+const browserDevices: Record<string, any> = {
+  chromium: devices['Desktop Chrome'],
+  firefox: devices['Desktop Firefox'],
+  webkit: devices['Desktop Safari'],
+};
+
+const projects = browserDevices[config.browser.name]
+  ? [{ 
+      name: config.browser.name, 
+      use: { ...globalUse, ...browserDevices[config.browser.name] } 
+    }]
+  : [
+      { name: 'chromium', use: { ...globalUse, ...devices['Desktop Chrome'] } },
+      { name: 'firefox', use: { ...globalUse, ...devices['Desktop Firefox'] } },
+      { name: 'webkit', use: { ...globalUse, ...devices['Desktop Safari'] } },
+    ];
 
 export default defineConfig({
   testDir: './tests',
   testMatch: ['**/*.spec.ts'],
-  timeout: 10_000,
+  timeout: config.timeouts.global,
+  outputDir: 'test-results',
+  globalSetup: './playwright.setup.ts',
   globalTeardown: './playwright.teardown.ts',
-  fullyParallel: false,
-  forbidOnly: !!process.env.CI,
-  retries: process.env.CI ? 2 : 0,
-  workers: process.env.CI ? 1 : 2,
+  fullyParallel: true,
+  forbidOnly: config.other.ci,
+  retries: config.other.ci ? 2 : 0,
+  workers: config.other.ci ? 2 : undefined,
   reporter: [
-    ['html', { outputFolder: 'test-results', open: 'never' }],
-    ['json', { outputFile: 'test-results/index.json' }]
+    ['html', { outputFolder: 'test-reports', open: 'never' }],
+    ['json', { outputFile: 'test-reports/index.json' }],
+    ['junit', { outputFile: 'test-reports/junit.xml' }],
   ],
-  use: {
-    baseURL: process.env.TEST_QUOTE_BASE_URL,
-    actionTimeout: 0,
-    trace: 'retain-on-failure',
-    headless: process.env.HEADLESS === 'true',
-    screenshot: 'only-on-failure',
-    video: 'retain-on-failure',
-    ignoreHTTPSErrors: true,
-    launchOptions: {
-      slowMo: Number(process.env.SLOW_MO),
-      args: ['--disable-web-security', '--disable-gpu', '--no-sandbox', '--disable-setuid-sandbox'],
-      ignoreDefaultArgs: ['--disable-extensions']
-    },
-    contextOptions: {
-      viewport: { width: 1920, height: 1080 },
-      permissions: ['geolocation'],
-      geolocation: { longitude: -122.4194, latitude: 37.7749 },
-      locale: 'en-US',
-      timezoneId: 'America/New_York',
-      recordVideo: { dir: 'videos/', size: { width: 1920, height: 1080 } }
-    }
-  },
-  projects
+  projects,
 });

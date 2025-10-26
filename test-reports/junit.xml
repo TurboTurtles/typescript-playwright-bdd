@@ -1,0 +1,35 @@
+<testsuites id="" name="" tests="3" failures="0" skipped="0" errors="0" time="5.929342">
+<testsuite name="test-1.spec.ts" timestamp="2025-10-26T02:42:12.979Z" hostname="chromium" tests="2" failures="0" skipped="0" time="6.104" errors="0">
+<testcase name="quote" classname="test-1.spec.ts" time="1.178">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|../test-results/test-1-quote-chromium/video.webm]]
+
+[[ATTACHMENT|../test-results/test-1-quote-chromium/trace.zip]]
+]]>
+</system-out>
+</testcase>
+<testcase name="usps" classname="test-1.spec.ts" time="4.926">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|../test-results/test-1-usps-chromium/video.webm]]
+
+[[ATTACHMENT|../test-results/test-1-usps-chromium/trace.zip]]
+]]>
+</system-out>
+</testcase>
+</testsuite>
+<testsuite name="test.spec.ts" timestamp="2025-10-26T02:42:12.979Z" hostname="chromium" tests="1" failures="0" skipped="0" time="2.154" errors="0">
+<testcase name="Quote Form Tests › should fill out and verify required fields" classname="test.spec.ts" time="2.154">
+<system-out>
+<![CDATA[
+[[ATTACHMENT|../test-results/test-Quote-Form-Tests-shou-f5e3d--and-verify-required-fields-chromium/test-finished-1.png]]
+
+[[ATTACHMENT|../test-results/test-Quote-Form-Tests-shou-f5e3d--and-verify-required-fields-chromium/video.webm]]
+
+[[ATTACHMENT|../test-results/test-Quote-Form-Tests-shou-f5e3d--and-verify-required-fields-chromium/trace.zip]]
+]]>
+</system-out>
+</testcase>
+</testsuite>
+</testsuites>

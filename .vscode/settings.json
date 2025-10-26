@@ -1,8 +1,8 @@
 {
   "cucumber.features": [
-    "features/**/*.feature"
+    "bdd/features/**/*.feature"
   ],
   "cucumber.glue": [
-    "steps/**/*.ts"
+    "bdd/steps/**/*.ts"
   ]
 }

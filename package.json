@@ -4,29 +4,28 @@
   "description": "",
   "type": "module",
   "scripts": {
-    "postinstall": "playwright install chromium firefox",
-    "test": "tsx ./node_modules/@cucumber/cucumber/bin/cucumber-js --config cucumber.cjs",
-    "test:smoke": "tsx ./node_modules/@cucumber/cucumber/bin/cucumber-js --config cucumber.cjs --tags '@smoke'",
-    "test:regression": "tsx ./node_modules/@cucumber/cucumber/bin/cucumber-js --config cucumber.cjs --tags '@regression'",
-    "test:playwright": "npx playwright test",
-    "test:codegen": "npx playwright codegen"
+    "browsers": "npx playwright install",
+    "bdd": "tsx ./node_modules/@cucumber/cucumber/bin/cucumber-js --config bdd/cucumber.cjs --tags",
+    "test": "npx playwright test",
+    "report": "npx playwright show-report test-reports",
+    "codegen": "npx playwright codegen"
   },
-  "dependencies": {
-    "typescript": "^5.8.3",
-    "tsx": "^4.19.4",
-    "@cucumber/cucumber": "^11.2.0",
-    "playwright": "^1.52.0",
-    "@playwright/test": "^1.52.0",
-    "@types/node": "^22.15.3",
+"dependencies": {
+    "typescript": "^5.9.3",
+    "tsx": "^4.20.6",
+    "@cucumber/cucumber": "^12.2.0",
+    "playwright": "^1.56.1",
+    "@playwright/test": "^1.56.1",
+    "@types/node": "^24.9.1",
     "cucumber-html-reporter": "^7.2.0",
-    "dotenv": "^16.5.0",
-    "axios": "^1.9.0",
+    "dotenv": "^17.2.3",
+    "axios": "^1.12.2",
     "jquery": "3.7.1"
   },
   "overrides": {
-    "glob": "^9.3.5",
-    "uuid": "^11.1.0",
+    "glob": "^11.0.3",
+    "uuid": "^13.0.0",
     "reflect-metadata": "^0.2.2",
-    "semver": "^7.5.2"
+    "semver": "^7.7.3"
   }
 }
