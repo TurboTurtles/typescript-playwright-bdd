@@ -26,7 +26,7 @@ export const config = {
     wait: parseInt(process.env.WAIT_TIMEOUT || '10000'),
   },
   testData: {
-    baseUrl: process.env.TEST_QUOTE_BASE_URL!,
+    quoteBaseUrl: process.env.TEST_QUOTE_BASE_URL!,
     username: process.env.TEST_USERNAME!,
     email: process.env.TEST_EMAIL!,
     password: process.env.TEST_PASSWORD!,
