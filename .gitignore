@@ -136,7 +136,6 @@ dist
 
 # Local artifacts
 .DS_Store
-package-lock.json
 
 # Test results
 test-results/
