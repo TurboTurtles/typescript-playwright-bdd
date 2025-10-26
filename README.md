@@ -18,19 +18,22 @@ This project is a robust end-to-end test automation framework using:
 #### [Visual Studio Code](https://code.visualstudio.com/)
 
 [Download](https://code.visualstudio.com/Download) and install from the official website.
-```
+
 After installing, open VSCode and install the official Playwright Test for VSCode extension:
-Go to the Settings -> Extensions tab (or press Ctrl+Shift+X / Cmd+Shift+X)
-Search for: Playwright Test for VSCode
-Publisher: Microsoft microsoft.com (Run Playwright Test tests in Visual Studio Code.)
-Install the extension.
+
 ```
+- Go to the Settings -> Extensions tab (or press Ctrl+Shift+X / Cmd+Shift+X)
+- Search for: Playwright Test for VSCode
+- Publisher: Microsoft microsoft.com (Run Playwright Test tests in Visual Studio Code.)
+- Install the extension.
 ```
+
 Also install the official Cucumber extension:
-Go to the Settings -> Extensions tab (or press Ctrl+Shift+X / Cmd+Shift+X)
-Search for: Cucumber
-Publisher: Cucumber cucumber.io (Cucmber for Visual Studio Code)
-Install the extension.
+```
+- Go to the Settings -> Extensions tab (or press Ctrl+Shift+X / Cmd+Shift+X)
+- Search for: Cucumber
+- Publisher: Cucumber cucumber.io (Cucmber for Visual Studio Code)
+- Install the extension.
 ```
 
 #### [Node.js](https://nodejs.org/) 
