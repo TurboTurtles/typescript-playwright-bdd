@@ -61,9 +61,9 @@ export default defineConfig({
   globalSetup: './playwright.setup.ts',
   globalTeardown: './playwright.teardown.ts',
   fullyParallel: true,
-  forbidOnly: config.other.ci,
-  retries: config.other.ci ? 2 : 0,
-  workers: config.other.ci ? 2 : undefined,
+  forbidOnly: !!config.other.ci,
+  retries: !!config.other.ci ? 2 : 0,
+  workers: !!config.other.ci ? 2 : undefined,
   reporter: [
     ['html', { outputFolder: 'test-reports', open: 'never' }],
     ['json', { outputFile: 'test-reports/index.json' }],

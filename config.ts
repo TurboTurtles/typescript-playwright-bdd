@@ -35,7 +35,7 @@ export const config = {
   },
   other: {
     debug: process.env.DEBUG === 'true',
-    ci: !!process.env.CI,
+    ci: process.env.CI,
   },
 };
 
