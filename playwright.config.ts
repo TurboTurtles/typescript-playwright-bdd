@@ -3,7 +3,6 @@ import { defineConfig, devices } from '@playwright/test';
 import { config } from './config';
 
 const globalUse = {
-  baseURL: config.testData.baseUrl,
   actionTimeout: config.timeouts.action,
   navigationTimeout: config.timeouts.navigation,
   trace: 'on',

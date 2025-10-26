@@ -5,15 +5,18 @@ import fs from 'fs/promises';
 import path from 'path';
 
 export default async function globalTeardown(config: FullConfig) {
-  const tempDir = path.resolve(process.cwd(), 'temp');
-  try {
-    const files = await fs.readdir(tempDir);
-    await Promise.all(files.map(file => fs.unlink(path.join(tempDir, file))));
-    console.log(`Cleaned up ${files.length} temp files in ${tempDir}`);
-  } catch (error: unknown) {
-    const e = error as NodeJS.ErrnoException;
-    if (e.code !== 'ENOENT') {
-      console.warn(`Could not clean temp: ${e.message}`);
+  const tempDirs = ['temp', 'downloads'];
+  for (const dirName of tempDirs) {
+    const tempDir = path.resolve(process.cwd(), dirName);
+    try {
+      await fs.access(tempDir);
+      await fs.rm(tempDir, { recursive: true, force: true });
+      console.log(`Cleaned up directory: ${tempDir}`);
+    } catch (error: unknown) {
+        const e = error as NodeJS.ErrnoException;
+        if (e.code !== 'ENOENT') {
+          console.warn(`Could not clean ${dirName}: ${e.message}`);
+        }
     }
   }
   const when = new Date().toISOString();

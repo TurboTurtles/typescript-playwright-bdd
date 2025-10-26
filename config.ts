@@ -1,6 +1,4 @@
 import dotenv from 'dotenv';
-
-// Load environment variables
 dotenv.config();
 
 // Centralized config object with defaults and types

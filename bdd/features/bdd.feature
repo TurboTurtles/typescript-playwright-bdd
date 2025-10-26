@@ -10,4 +10,4 @@ Feature: Search
     Then I wait for any element using css "p[data-test-id='web-result-description']" to be visible
     Then I should see element using css "#main" inner text contains "Cucumber"
 
-
+  

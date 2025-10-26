@@ -4,7 +4,7 @@
   "description": "",
   "type": "module",
   "scripts": {
-    "browsers": "npx playwright install",
+    "browsers": "npx playwright install --with-deps",
     "bdd": "tsx ./node_modules/@cucumber/cucumber/bin/cucumber-js --config bdd/cucumber.cjs --tags",
     "test": "npx playwright test",
     "report": "npx playwright show-report test-reports",
