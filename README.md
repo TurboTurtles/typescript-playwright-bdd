@@ -128,11 +128,12 @@ cd typescript-playwright-bdd
 
 #### 🍎 macOS
 
-In VSCode, open Termianl
+In VSCode, open Terminal and run:
 ```bash
 npm install
 ```
-##### 🪟 Windows
+
+#### 🪟 Windows
 - Open Powershell as Admin (Run as Administrator)
 - Check current execution policy
 ```bash
@@ -145,6 +146,10 @@ Set-ExecutionPolicy RemoteSigned
 - Validate that changed
 ```bash
 Get-ExecutionPolicy
+```
+Then in VSCode, open Terminam and run:
+```bash
+npm install
 ```
 
 ### 4. Running tests
