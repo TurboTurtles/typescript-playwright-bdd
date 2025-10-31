@@ -7,7 +7,7 @@ This project is a robust end-to-end test automation framework using:
 - ✅ [Cucumber](https://cucumber.io/) for BDD (Gherkin syntax)
 - ✅ [TypeScript](https://www.typescriptlang.org/) for static typing
 - ✅ [Node.js](https://nodejs.org/) as the runtime
-- ✅ [Visual Studio Code](https://code.visualstudio.com/) for development with official Cucumber extension
+- ✅ [Visual Studio Code](https://code.visualstudio.com/) for development
 
 ---
 
@@ -164,10 +164,8 @@ npx playwright install
 
 BDD Playwright tests:
 ```bash
-npm run bdd -- '@bdd1'
+npm run bdd -- "@bdd1"
 ```
-
-
 
 ### 4.2 Running Playwright tests
 
@@ -179,13 +177,13 @@ npx playwright test
 npx playwright test tests/test.spec.ts
 ```
 ```bash
-npx playwright test -g 'partial test name'
+npx playwright test -g "partial test name"
 ```
 ```bash
-npx playwright test -g 'partial test name' -g 'another partial test name'
+npx playwright test -g "partial test name" -g "another partial test name"
 ```
 ```bash
-npx playwright test --grep-invert 'excluded partial name'
+npx playwright test --grep-invert "excluded partial name"
 ```
 
 Playwright report:
