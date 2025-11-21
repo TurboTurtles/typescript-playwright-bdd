@@ -29,3 +29,29 @@ test('drag and drop', async ({ page }) => {
     await firstPhoto.dragTo(trash);
     await page.waitForTimeout(1000);
 });
+
+test('scroll into view', async ({ page }) => {
+    await page.goto('https://nop-qa.portnov.com/register');
+    const newsletter = page.locator('#Newsletter');
+    await newsletter.scrollIntoViewIfNeeded();
+    await page.waitForTimeout(1000);
+    await expect(newsletter).toBeVisible();
+});
+
+test('set content', async ({ page }) => {
+    await page.goto('https://nop-qa.portnov.com/register');
+    await page.evaluate(() => {
+        document.body.innerHTML = '<p>This is our new content!!!</p>';
+    });
+    await page.waitForTimeout(1000);
+    await expect(selectedText).toContain('Wikipedia');
+});
+
+test('evaluate demo', async ({ page }) => {
+    await page.goto('https://nop-qa.portnov.com/register');
+    const firstNameField = page.locator('#FirstName');
+    await firstNameField.evaluate((el: HTMLInputElement) => {
+        el.value = 'This is JS value';
+    });
+    await page.waitForTimeout(1000);
+});
