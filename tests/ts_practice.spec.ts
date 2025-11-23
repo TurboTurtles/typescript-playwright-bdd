@@ -55,3 +55,33 @@ test('evaluate demo', async ({ page }) => {
     });
     await page.waitForTimeout(1000);
 });
+
+test('evaluate demo', async ({ page }) => {
+    await page.goto('https://nop-qa.portnov.com/register');
+    const firstNameField = page.locator('#FirstName');
+    await firstNameField.evaluate((el: HTMLInputElement) => {
+        el.value = 'This is JS value';
+    });
+    await page.waitForTimeout(1000);
+
+    const maleRadio = page.locator('#gender-male');
+    await maleRadio.evaluate((el: HTMLInputElement) => {
+        el.click();
+    });
+    await page.waitForTimeout(1000);
+});
+
+test('expect', async ({ page }) => {
+    await page.goto('https://nop-qa.portnov.com/register');
+    await expect(page.locator('#FirstName')).toBeVisible();
+
+});
+
+await expect(page.locator('#FirstName')).toBeEnabled();
+
+const maleRadio = page.locator('#gender-male');
+await maleRadio.evaluate((el: HTMLInputElement) => {
+    el.click();
+});
+
+await expect(maleRadio).toBeChecked();

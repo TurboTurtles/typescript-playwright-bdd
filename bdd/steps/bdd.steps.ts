@@ -642,4 +642,5 @@ When('I switch to tab with title {string}', async function (this: CustomWorld, t
   } else {
     throw new Error(`Tab with title "${title}" not found`);
   }
+  
 });
