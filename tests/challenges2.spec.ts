@@ -39,7 +39,7 @@ test('FizzBuzz2', async () => {
 
 
 
-test('Count Event', async () => {
+test('Count Even', async () => {
     //function
     // counter
     // loop through the array
@@ -343,11 +343,11 @@ test('reverseString', async () => {
 test('reverseString2', async () => {
     function reverseString(str: string): string {
         let reversed = "";
-        for(let i = str.length -1; i >= 0; i--) {
+        for (let i = str.length - 1; i >= 0; i--) {
             reversed += str[i];
         }
         return reversed;
-    }    
+    }
     console.log(reverseString("NARHIM"));
 });
 
@@ -368,13 +368,13 @@ test('budget filter', async () => {
     console.log(budgetFilter([10, 25, 5, 40], 20));
 });
 
-test('NaturalOddNumbers',  () => {
- const sumNaturaloddNumbers = (n: number): number => {
-    let sum = 0;
-    for (let i = 1; i <= n; i += 2) {
-        sum += i;
-    }
-    return sum;
+test('NaturalOddNumbers', () => {
+    const sumNaturaloddNumbers = (n: number): number => {
+        let sum = 0;
+        for (let i = 1; i <= n; i += 2) {
+            sum += i;
+        }
+        return sum;
     };
     console.log(sumNaturaloddNumbers(10));
 });
@@ -415,19 +415,19 @@ test('Factorial', () => {
 
 test('Factorial 2', () => {
     // console.log('factorial(-3): ', factorial(-3)); // this will throw an error
-const factorial = (num: number): number => {
-    if (num < 0) {
-        throw new Error('Negative number is not allowed');
-    }
+    const factorial = (num: number): number => {
+        if (num < 0) {
+            throw new Error('Negative number is not allowed');
+        }
 
-    let result: number = 1;
-    for (let i = 1; i <= num; i++) {
-        result *= i;
-    }
-    return result;
-};
-console.log('factorial(5): ', factorial(5));
-console.log('factorial(0): ', factorial(0));
+        let result: number = 1;
+        for (let i = 1; i <= num; i++) {
+            result *= i;
+        }
+        return result;
+    };
+    console.log('factorial(5): ', factorial(5));
+    console.log('factorial(0): ', factorial(0));
 
 });
 
@@ -480,36 +480,36 @@ test('Power of 2', async () => {
 //         if (inValue % 2 !== 0)
 //             return ‘inValid memory size’;
 //         inValue = inValue / 2;
-    // }
-    // return ‘Valid memory size’;
-    // let testdata1 = validMem(10);
-    // console.log(testdata1);
-    // expect(testdata1).tobe(‘inValid memory size’);
-    // testdata1 = validMem(512);
-    // console.log(testdata1);
-    // expect(testdata1).tobe(‘Valid memory size’);
+// }
+// return ‘Valid memory size’;
+// let testdata1 = validMem(10);
+// console.log(testdata1);
+// expect(testdata1).tobe(‘inValid memory size’);
+// testdata1 = validMem(512);
+// console.log(testdata1);
+// expect(testdata1).tobe(‘Valid memory size’);
 
 
 
 // Fibanacci sequence
 
-    test('Fibonacci sequenc', async () => {
-        function generateFibonacci(count: number): number[] {
-            if (count <= 0) {
-                return [];
-            }
-            if (count === 1) {
-                return [0];
-            }
-
-            const fib: number[] = [0, 1];
-            for (let i = 2; i < count; i++) {
-                fib[i] = fib[i - 1] + fib[i - 2];
-            }
-            return fib;
+test('Fibonacci sequenc', async () => {
+    function generateFibonacci(count: number): number[] {
+        if (count <= 0) {
+            return [];
         }
-        console.log(generateFibonacci(5));
-    });
+        if (count === 1) {
+            return [0];
+        }
+
+        const fib: number[] = [0, 1];
+        for (let i = 2; i < count; i++) {
+            fib[i] = fib[i - 1] + fib[i - 2];
+        }
+        return fib;
+    }
+    console.log(generateFibonacci(5));
+});
 
 // number of users in your company grow with fibonacci sequence
 // create a function that will return number of users after n weeks
@@ -615,7 +615,7 @@ test('verses', () => {
 });
 
 
- 
+
 // Highest Mountain: The drone investigated the area and scanned the mountains in it.The task is to find the highest peak
 
 test('dron', () => {
@@ -694,7 +694,7 @@ test('Ales', () => {
 
 
 //Password digits
- 
+
 // Count digits in a password.Example password:
 // "hu3h452jijg" => 4 digits
 
