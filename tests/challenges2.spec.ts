@@ -36,7 +36,9 @@ test('FizzBuzz2', async () => {
         console.log(result === "" ? i : result);
     }
 });
-// another way to solve FizzBuzz
+
+
+
 test('Count Event', async () => {
     //function
     // counter
@@ -366,4 +368,346 @@ test('budget filter', async () => {
     console.log(budgetFilter([10, 25, 5, 40], 20));
 });
 
+test('NaturalOddNumbers',  () => {
+ const sumNaturaloddNumbers = (n: number): number => {
+    let sum = 0;
+    for (let i = 1; i <= n; i += 2) {
+        sum += i;
+    }
+    return sum;
+    };
+    console.log(sumNaturaloddNumbers(10));
+});
 
+test('Natural odd numbers2', () => {
+    // the param limit represents the end range of a natural numbers set, i.e. for 10, it is 0,1,2,3,4..10
+    const sumNaturalOddNumbers = (limit: number): number => {
+        if (limit < 0) {
+            throw new Error(`Provided parameter ${limit} is not a natural number! (0-n)`);
+        }
+        let sum = 0;
+        for (let num = 0; num <= limit; num++) {
+            if (num % 2 !== 0) {
+                sum += num;
+            }
+        }
+        return sum;
+    };
+    console.log('sumNaturalOddNumbers(10): ', sumNaturalOddNumbers(10));
+    console.log('sumNaturalOddNumbers(-5): ', sumNaturalOddNumbers(-5));
+});
+
+test('Factorial', () => {
+    // Factorial of 5! = 5*4*3*2*1 = 120
+    // Factorial of 0! = 1
+    // Factorial of negative is not allowed
+
+    const factorial = (n: number): number => {
+        let result: number = 1;
+        for (let i = n; i > 0; i--) {
+            result = result * i;
+        }
+        return result;
+    };
+    console.log('factorial(5): ', factorial(5));
+});
+
+
+test('Factorial 2', () => {
+    // console.log('factorial(-3): ', factorial(-3)); // this will throw an error
+const factorial = (num: number): number => {
+    if (num < 0) {
+        throw new Error('Negative number is not allowed');
+    }
+
+    let result: number = 1;
+    for (let i = 1; i <= num; i++) {
+        result *= i;
+    }
+    return result;
+};
+console.log('factorial(5): ', factorial(5));
+console.log('factorial(0): ', factorial(0));
+
+});
+
+
+
+test('Count digits of Int number', () => {
+    // 582359246 => 9 digits
+    // 0 => 1 digit
+
+    const countDigitsOfIntNumber = (num: number): number => {
+        let result = num.toString().length;
+        return result;
+
+    };
+    console.log('countDigitsOfIntNumber(0): ', countDigitsOfIntNumber(0));
+    console.log('countDigitsOfIntNumber(582359246): ', countDigitsOfIntNumber(582359246));
+});
+
+// isPowerOfTwo(8) // true
+// isPowerOfTwo(10) // false
+
+test('Power of 2', async () => {
+    function isPowerOfTwo(n: number): boolean {
+        if (n <= 0) {
+            return false;
+        }
+
+        while (n > 1) {
+            if (n % 2 !== 0) {
+                return false; // not divisible by 2
+            }
+            n = n / 2;
+        }
+        return true;
+    }
+    console.log(isPowerOfTwo(16));
+});
+
+// write a function that validate if memory can be allocated if yes - return "Valid memory size"
+// otherwise return "Invalid memory size"
+// validateMemory(512) // "Valid memory size"
+// validateMemory(300) // "Invalid memory size"
+
+
+// const validMem = (inValue: number): string => {
+//     if (inValue === 1)
+//         return ‘inValid memory size’;
+//     While(inValue > 1)
+//     {
+//         if (inValue % 2 !== 0)
+//             return ‘inValid memory size’;
+//         inValue = inValue / 2;
+    // }
+    // return ‘Valid memory size’;
+    // let testdata1 = validMem(10);
+    // console.log(testdata1);
+    // expect(testdata1).tobe(‘inValid memory size’);
+    // testdata1 = validMem(512);
+    // console.log(testdata1);
+    // expect(testdata1).tobe(‘Valid memory size’);
+
+
+
+// Fibanacci sequence
+
+    test('Fibonacci sequenc', async () => {
+        function generateFibonacci(count: number): number[] {
+            if (count <= 0) {
+                return [];
+            }
+            if (count === 1) {
+                return [0];
+            }
+
+            const fib: number[] = [0, 1];
+            for (let i = 2; i < count; i++) {
+                fib[i] = fib[i - 1] + fib[i - 2];
+            }
+            return fib;
+        }
+        console.log(generateFibonacci(5));
+    });
+
+// number of users in your company grow with fibonacci sequence
+// create a function that will return number of users after n weeks
+// usersAfterWeeks(1) //1
+// usersAfterWeeks(2) //1
+// usersAfterWeeks(6) //8
+
+test('Fib users', async () => {
+    function usersWeeks(week: number): number {
+        if (week <= 0) return 0;
+        if (week === 1 || week === 2) return 1;
+
+        let prev = 1;
+        let curr = 1;
+
+        for (let i = 3; i <= week; i++) {
+            const next = prev + curr;
+            prev = curr;
+            curr = next;
+        }
+
+        return curr;
+    }
+    //expect(usersWeeks(6)).toBe(8);
+    console.log(usersWeeks(6));
+});
+
+// calculate position of a given Fibonacci number in a sequence
+// ex. [0,1,1,2,3,5,8,13] for imput 8 -> 7, for input 13 -> 8, if not found return 0.
+
+test('Fibonacci position', async () => {
+    function fibPosition(n: number) {
+        let a = 0;
+        let b = 1;
+        let index = 1;
+
+        while (a < n) {
+            const next = a + b;
+            a = b;
+            b = next;
+            index++;
+        }
+
+        return a === n ? index : 0;
+    }
+    console.log(fibPosition(8));
+});
+
+test("beardLenght", () => {
+    function beardLenght(count: number): number {
+        let summary = 0;
+        for (let i = 1; i <= count; i++) {
+            if (i % 2 == 0) {
+                summary = summary + 2.5; //2.5*2=5
+            } else {
+                summary = summary + 5; //5*3=15
+            }
+        }
+        return summary;
+    }
+    console.log(beardLenght(5));
+});
+
+// The RPG Experience CalculatorTask: You are developing the progression system for an RPG.Given an array of integers representing XP rewards from completed quests, write a function that calculates the total experience points gained by the player.
+
+// Dwarf Beard Growth: Every dwarf adds 5 inches of beard, but every second dwarf braids it (half length of what was grown). What is the total cumulative growth of the beard across all dwarfs?
+
+// Dwarf Total Beard Length: Every dwarf adds 5 inches of beard, but every second dwarf braids it (half length of total grown). What is the total length of the beard across all dwarfs?
+
+
+
+//3", 6" , 7", 1", 0"
+test("beardLenght2", () => {
+    function beardLenght2(arr: number[]): number {
+        let summary = 0;
+        for (let i = 0; i < arr.length; i++) {
+            if ((i + 1) % 2 == 0) {
+                summary = summary + (arr[i] + 5) / 2;
+            } else {
+                summary = summary + (arr[i] + 5);
+            }
+        }
+        return summary;
+    }
+    console.log(beardLenght2([3, 6, 7, 1, 0])); 8 + 5.5 + 12 + 3 + 5
+});
+
+// Dwarf Tunnel Song: Concatenate verses, but every second verse is "Hi Ho!".
+
+test('verses', () => {
+    const verses = (ver: string[]): string => {
+        let song = '';
+        for (let i = 0; i < ver.length; i++) {
+            song += ver[i] + " ";
+            if ((i + 1) % 2 === 0) {
+                song += "Hi Ho ";
+            }
+        }
+        return song;
+    }
+    console.log(verses(["1", "2", "3", "4", "5"]));
+    console.log(verses(["let's sing", "let's sing", "let's sing", "let's sing", "let's sing"]));
+});
+
+
+ 
+// Highest Mountain: The drone investigated the area and scanned the mountains in it.The task is to find the highest peak
+
+test('dron', () => {
+    function highestPeak(arr: number[]): number {
+        let max = arr[0];
+
+        for (let i = 1; i < arr.length; i++) {
+            if (arr[i] > max) {
+                max = arr[i]
+            }
+        }
+        return max;
+    }
+    console.log(highestPeak([1, 4, 101, 67, 99]))
+});
+
+
+
+// Oldest Dwarf: Find the oldest dwarf, but ignore ghosts (age > 500).
+
+test('two oldest dwarf', () => {
+    function twoOldestDwarf(arr: number[]): number[] {
+        let max1 = -Infinity;
+        let max2 = -Infinity;
+
+
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i] > max1) {
+                max2 = max1;
+                max1 = arr[i];
+            } else if (arr[i] > max2) {
+                max2 = arr[i];
+            }
+        }
+        return [max1, max2];
+    }
+    console.log(twoOldestDwarf([1, 502, 101, 67, 99, 504, 3]))
+});
+
+test('two oldest dwarf2', () => {
+    function twoOldestDwarf(arr: number[]): number[] {
+        let max1 = -Infinity;
+        let max2 = -Infinity;
+
+
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i] > max1) {
+                max2 = max1;
+                max1 = arr[i];
+            } else if (arr[i] > max2 && arr[i] !== max1) {
+                max2 = arr[i];
+            }
+        }
+        return [max1, max2];
+    }
+    console.log(twoOldestDwarf([1, 504, 502, 101, 67, 99, 504, 3]))
+});
+
+// Bar Tab
+// Calculate the cost of Ale, when every 3th ale is free.
+
+test('Ales', () => {
+    const listOfDrinks = (drinks: number[]): number => {
+        let sum = 0;
+        for (let i = 0; i < drinks.length; i++) {
+            if ((i + 1) % 3 !== 0) {
+                sum += drinks[i];
+            }
+
+        }
+        return sum;
+    }
+    console.log(listOfDrinks([5, 10, 5, 15, 10, 5]));
+
+});
+
+
+//Password digits
+ 
+// Count digits in a password.Example password:
+// "hu3h452jijg" => 4 digits
+
+test('Count digits', () => {
+    const countDigits = (pas: string): number => {
+        let count: number = 0;
+        for (let i = 0; i < pas.length; i++) {
+            if (pas[i] >= '0' && pas[i] <= '9') {
+                count++;
+            }
+        }
+        return count;
+    }
+    console.log(countDigits('hu3h452jijg'));
+
+});
